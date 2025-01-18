@@ -44,7 +44,6 @@ public class Swerve extends SubsystemBase{
     private SwerveModule BL;
     private SwerveModule BR;
 
-
     StructArrayPublisher<SwerveModuleState> modStatusPublisher = NetworkTableInstance.getDefault()
         .getStructArrayTopic("Swerve/ModuleStatus", SwerveModuleState.struct).publish();
     StructArrayPublisher<SwerveModuleState> modTargetPublisher = NetworkTableInstance.getDefault()
@@ -72,6 +71,7 @@ public class Swerve extends SubsystemBase{
             new SwerveModule(3, Constants.Swerve.Mod3.constants)
         };
 
+        // Set references for auto logging
         FL = mSwerveMods[0];
         FR = mSwerveMods[1];
         BL = mSwerveMods[2];

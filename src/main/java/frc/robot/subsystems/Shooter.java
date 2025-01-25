@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
@@ -32,31 +33,31 @@ import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 
 
 
-public class Intake extends SubsystemBase {
+public class Shooter extends SubsystemBase {
 
-  private SparkMax intakemotor1;
-  private SparkMax intakemotor2;
+  private SparkMax motor10;
+  private SparkMax motor20;
   /** Creates a new Intake. */
-  public Intake() {
-  intakemotor1 = new SparkMax(60, MotorType.kBrushless);
-  intakemotor2 = new SparkMax(61, MotorType.kBrushless);
+  public Shooter() {
+  motor10 = new SparkMax(60, MotorType.kBrushless);
+  motor20 = new SparkMax(61, MotorType.kBrushless);
      
-  SparkMaxConfig intakemotor1Config = new SparkMaxConfig();
-  SparkMaxConfig intakemotor2Config = new SparkMaxConfig();
+  SparkMaxConfig motor10Config = new SparkMaxConfig();
+  SparkMaxConfig motor20Config = new SparkMaxConfig();
 
-  intakemotor1Config
+  motor10Config
      .smartCurrentLimit(30)
      .idleMode(IdleMode.kCoast);
     
-    intakemotor1.configure (intakemotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    motor10.configure (motor10Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-      intakemotor2Config.apply(intakemotor1Config);
-       intakemotor2Config.follow(intakemotor1, true);
+      motor20Config.apply(motor10Config);
+       motor20Config.follow(motor10, true);
 
-    intakemotor2.configure(intakemotor2Config , ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    motor20.configure(motor20Config , ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
      this.setDefaultCommand(
-      new FunctionalCommand(()-> {intakemotor1.set(0);},
+      new FunctionalCommand(()-> {motor10.set(0);},
       () -> {},
        (killed) -> {},
         () -> {return false;},
@@ -67,11 +68,12 @@ public class Intake extends SubsystemBase {
   }
  
 
-public Command Take()
+public Command Spit()
 
 {
-    return new InstantCommand(() -> intakemotor1.set(1), this);
-}
+    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(1)) , new InstantCommand(() -> motor20.set(1), this));
+    
+}   
   
 
 

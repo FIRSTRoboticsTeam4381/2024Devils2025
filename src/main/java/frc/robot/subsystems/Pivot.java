@@ -17,20 +17,17 @@ import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 
 public class Pivot extends SubsystemBase {
   private SparkMax motor1;
   private SparkMax motor3;
-  private DigitalInput brakeBeam1;
-  private DigitalInput brakeBeam2;
-  /** Creates a new Indexter. */
+  //Creates a new Pivot.
   public Pivot() {
 
     motor1 = new SparkMax(50, MotorType.kBrushless);
-    brakeBeam1 = new DigitalInput(1);
-    brakeBeam2 = new DigitalInput(2);
-    
+    motor3 = new SparkMax(51, MotorType.kBrushless);
     
 
 
@@ -44,9 +41,9 @@ public class Pivot extends SubsystemBase {
 
     new SequentialCommandGroup
     ( new InstantCommand(() -> motor1.set(0.4)),
-      new WaitUntilCommand(() -> !brakeBeam1.get()),
+      new WaitCommand(1),
       new InstantCommand(() -> motor1.set(0))
-    ).setName("Obtaining Loop Thingy");
+    ).setName("Shooting Loop Thingy");
     
 
 this.setDefaultCommand(

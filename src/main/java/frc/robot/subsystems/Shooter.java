@@ -71,7 +71,7 @@ public class Shooter extends SubsystemBase {
 public Command Spit()
 
 {
-    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(1)) , new InstantCommand(() -> motor20.set(1), this));
+    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(1)) , new InstantCommand(() -> motor20.set(1), this)).withName("Shooter shoot letter o");
     
 }   
   

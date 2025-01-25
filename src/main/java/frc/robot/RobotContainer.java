@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.Autos;
 import frc.robot.commands.TeleopSwerve;
+import frc.robot.subsystems.Indexter;
 import frc.robot.subsystems.PhotonCam;
 import frc.robot.subsystems.Swerve;
 
@@ -36,6 +37,7 @@ public class RobotContainer {
 
   // Subsystems
   public final Swerve swerve = new Swerve();
+  public final Indexter indexter =  new Indexter();
 
   
   //public final PhotonCam camA = new PhotonCam("Camera A", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(-7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/-4-Math.PI)) );

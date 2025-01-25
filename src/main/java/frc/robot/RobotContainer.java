@@ -25,6 +25,8 @@ import frc.robot.commands.TeleopSwerve;
 import frc.robot.subsystems.Indexter;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.PhotonCam;
+import frc.robot.subsystems.Pivot;
+import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Swerve;
 
 @Logged
@@ -40,6 +42,9 @@ public class RobotContainer {
   // Subsystems
   public final Swerve swerve = new Swerve();
   public final Indexter indexter =  new Indexter();
+  public final Pivot pivot = new Pivot();
+  public final Shooter shooter = new Shooter();
+  public final Intake intake = new Intake();
 
   
   //public final PhotonCam camA = new PhotonCam("Camera A", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(-7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/-4-Math.PI)) );
@@ -83,8 +88,8 @@ public class RobotContainer {
           interpolateJoystick (driver::getRightX,0.05),
              true, driver.leftBumper()::getAsBoolean));
 
-
-            specialist.a().onTrue(Intake.Take);
+          pivot.setDefaultCommand(pivot.joystickControl(specialist::getLeftY));
+            specialist.a().onTrue(intake.Take());
 
              specialist.back().onTrue
              (

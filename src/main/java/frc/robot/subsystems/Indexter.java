@@ -46,7 +46,7 @@ public class Indexter extends SubsystemBase {
     ( new InstantCommand(() -> motor1.set(0.4)),
       new WaitUntilCommand(() -> !brakeBeam1.get()),
       new InstantCommand(() -> motor1.set(0))
-    ).setName("Obtaining Loop Thingy");
+    ).withName("Obtaining Froot Loopy Thingy Thingy");
     
 
 this.setDefaultCommand(

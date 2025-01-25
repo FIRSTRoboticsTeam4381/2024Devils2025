@@ -6,6 +6,9 @@ package frc.robot.subsystems;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
+
+import java.util.function.Supplier;
+
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
@@ -13,16 +16,28 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RepeatCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 
+
+
+
 public class Pivot extends SubsystemBase {
   private SparkMax motor1;
   private SparkMax motor3;
+  public Command joystickControl(Supplier<Double> input)
+{
+return new RepeatCommand
+(
+  new InstantCommand(() -> motor1.set(input.get()), this)
+);
+}
   //Creates a new Pivot.
   public Pivot() {
 
@@ -43,7 +58,7 @@ public class Pivot extends SubsystemBase {
     ( new InstantCommand(() -> motor1.set(0.4)),
       new WaitCommand(1),
       new InstantCommand(() -> motor1.set(0))
-    ).setName("Shooting Loop Thingy");
+    ).withName("Postition to shoot Frooty Loopy Thingy");
     
 
 this.setDefaultCommand(

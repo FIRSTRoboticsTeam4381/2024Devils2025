@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.Autos;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.subsystems.Indexter;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.PhotonCam;
 import frc.robot.subsystems.Swerve;
 
@@ -83,7 +84,7 @@ public class RobotContainer {
              true, driver.leftBumper()::getAsBoolean));
 
 
-
+            specialist.a().onTrue(Intake.Take);
 
              specialist.back().onTrue
              (

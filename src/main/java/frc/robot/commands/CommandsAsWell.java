@@ -4,10 +4,18 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Pivot;
+
 /** Add your docs here. */
 public class CommandsAsWell 
 {
- specialist.x().whileTrue(Pivot.Obtaining_Loop_Thingy, Intake.Take );
+ ParallelCommandGroup(
+    pivot.Obtaining_Loop_Thingy,
+    Intake.take
+ )
+ 
 
 
 

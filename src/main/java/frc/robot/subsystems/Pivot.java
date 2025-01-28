@@ -54,11 +54,7 @@ return new RepeatCommand
 
     motor1.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-    new SequentialCommandGroup
-    ( new InstantCommand(() -> motor1.set(0.4)),
-      new WaitCommand(1),
-      new InstantCommand(() -> motor1.set(0))
-    ).withName("Postition to shoot Frooty Loopy Thingy");
+    
     
 
 this.setDefaultCommand(
@@ -80,8 +76,13 @@ this)
   }
 
 
-
-
-
+public Command frootLoopPosition()
+{
+  return new SequentialCommandGroup
+    ( new InstantCommand(() -> motor1.set(0.4)),
+      new WaitCommand(1),
+      new InstantCommand(() -> motor1.set(0))
+    ).withName("Postition to shoot Frooty Loopy Thingy");
+}
 
 }

@@ -13,6 +13,7 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -42,11 +43,7 @@ public class Indexter extends SubsystemBase {
 
     motor1.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-    new SequentialCommandGroup
-    ( new InstantCommand(() -> motor1.set(0.4)),
-      new WaitUntilCommand(() -> !brakeBeam1.get()),
-      new InstantCommand(() -> motor1.set(0))
-    ).withName("Obtaining Froot Loopy Thingy Thingy");
+    
     
 
 this.setDefaultCommand(
@@ -68,8 +65,14 @@ this)
   }
 
 
-
-
+public Command PositioningFrootLoop()
+{
+  return new SequentialCommandGroup
+    ( new InstantCommand(() -> motor1.set(0.4)),
+      new WaitUntilCommand(() -> !brakeBeam1.get()),
+      new InstantCommand(() -> motor1.set(0))
+    ).withName("Obtaining Froot Loopy Thingy Thingy");
+}
 
 
 }

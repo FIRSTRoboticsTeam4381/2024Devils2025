@@ -13,16 +13,17 @@ import frc.robot.subsystems.Swerve;
 /** Add your docs here. */
 public class CommandsAsWell 
 {
+
+
  
- public final Pivot pivot = new Pivot();
-
-
-
-
-
 }
 
 
+
+public SequentialCommandGroup()
+{
+   
+}
 
 
 

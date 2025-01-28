@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.Autos;
+import frc.robot.commands.CommandsAsWell;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.subsystems.Indexter;
 import frc.robot.subsystems.Intake;
@@ -47,6 +48,9 @@ public class RobotContainer {
   public final Intake intake = new Intake();
 
   
+  //public final CommandsAsWell commandsAsWell = new CommandsAsWell(indexter, pivot, intake, shooter);
+
+
   //public final PhotonCam camA = new PhotonCam("Camera A", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(-7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/-4-Math.PI)) );
   //public final PhotonCam camB = new PhotonCam("Camera B", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
   //public final PhotonCam camC = new PhotonCam("Camera C", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
@@ -77,8 +81,6 @@ public class RobotContainer {
     
     // Configure button bindings
     configureBindings();
-
-    
   }
 
   private void configureBindings() {

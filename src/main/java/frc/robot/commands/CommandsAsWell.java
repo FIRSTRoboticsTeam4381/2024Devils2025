@@ -4,8 +4,10 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import frc.robot.subsystems.Hang;
 import frc.robot.subsystems.Indexter;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Pivot;
@@ -18,12 +20,14 @@ public class CommandsAsWell
     public Indexter indexter;
     public Intake intake;
     public Shooter shooter;
+    public Hang hang;
     public CommandsAsWell(Indexter indexter, Pivot pivot, Intake intake, Shooter shooter)
     {
         this.pivot = pivot;
         this.indexter = indexter;
         this.intake = intake;
         this.shooter = shooter;
+        this.hang = hang;
 
     }
   
@@ -35,10 +39,17 @@ public class CommandsAsWell
     return new ParallelCommandGroup(new InstantCommand(() -> pivot.postitionToIndex()),
     new InstantCommand(() -> intake.Take()),
     new InstantCommand(() -> indexter.indexTheFrootLoop()), 
-    new InstantCommand(() -> shooter.Spit()));
-      
- }
- 
+    new InstantCommand(() -> shooter.positionToSpit()));
+    }
+
+    public Command ShootDaLoop()
+    {return new InstantCommand(() -> shooter.Spit());}
+
+    public Command HangingBeLikeLinkBelow(){return new InstantCommand(() -> hang.moveMotors());}
+    //https://docs.google.com/drawings/d/1TeFOMbGi8nhKHN2m8WwbuMTyZIh4Pd70n5V85woD9nY/edit?usp=sharing
+    
+
+
 }
 
 

@@ -21,7 +21,7 @@ public class CommandsAsWell
     public Intake intake;
     public Shooter shooter;
     public Hang hang;
-    public CommandsAsWell(Indexter indexter, Pivot pivot, Intake intake, Shooter shooter)
+    public CommandsAsWell(Indexter indexter, Pivot pivot, Intake intake, Shooter shooter, Hang hang)
     {
         this.pivot = pivot;
         this.indexter = indexter;

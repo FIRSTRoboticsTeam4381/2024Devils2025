@@ -39,14 +39,13 @@ public class CommandsAsWell
     return new ParallelCommandGroup(new InstantCommand(() -> pivot.postitionToIndex()),
     new InstantCommand(() -> intake.Take()),
     new InstantCommand(() -> indexter.indexTheFrootLoop()), 
-    new InstantCommand(() -> shooter.Spit()));
+    new InstantCommand(() -> shooter.positionToSpit()));
     }
 
     public Command ShootDaLoop()
     {return new InstantCommand(() -> shooter.Spit());}
 
-    public Command HangingBeLikeLinkBelow(){return new InstantCommand(() -> hang.moveMotors());}
-    //https://docs.google.com/drawings/d/1TeFOMbGi8nhKHN2m8WwbuMTyZIh4Pd70n5V85woD9nY/edit?usp=sharing
+    public Command HangingIsInYourImagination(){return new InstantCommand(() -> hang.moveMotors());}
     
 
 

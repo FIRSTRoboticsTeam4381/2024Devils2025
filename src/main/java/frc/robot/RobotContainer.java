@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.Autos;
 import frc.robot.commands.CommandsAsWell;
 import frc.robot.commands.TeleopSwerve;
+import frc.robot.subsystems.Hang;
 import frc.robot.subsystems.Indexter;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.PhotonCam;
@@ -46,7 +47,7 @@ public class RobotContainer {
   public final Pivot pivot = new Pivot();
   public final Shooter shooter = new Shooter();
   public final Intake intake = new Intake();
-
+  public final Hang hang = new Hang();
   
   //public final CommandsAsWell commandsAsWell = new CommandsAsWell(indexter, pivot, intake, shooter);
 
@@ -93,7 +94,16 @@ public class RobotContainer {
              true, driver.leftBumper()::getAsBoolean));
 
           pivot.setDefaultCommand(pivot.joystickControl(specialist::getLeftY));
-            specialist.a().onTrue(intake.Take());
+
+
+          specialist.x().onTrue(intake.Take());
+            specialist.x().onFalse(intake.stopspinningthing());
+
+            specialist.a().onTrue(shooter.Spit());
+            specialist.a().onFalse(shooter.stopspit());
+
+            specialist.leftBumper().onTrue(Hang.moveMotors);
+
 
              specialist.back().onTrue
              (

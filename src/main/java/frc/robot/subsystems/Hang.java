@@ -90,7 +90,7 @@ public Command moveMotors()
       new WaitCommand(1),
       new InstantCommand(() -> motorHang1.set(-1)),
       new InstantCommand(() -> motorHang2.set(-1))
-    ).withName("Postition to shoot Frooty Loopy Thingy");
+    ).withName("Postition_to_shoot_Froot_Loopy_Thingy");
     
 }
 

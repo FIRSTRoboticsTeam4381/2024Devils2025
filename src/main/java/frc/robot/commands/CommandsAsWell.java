@@ -39,7 +39,7 @@ public class CommandsAsWell
     return new ParallelCommandGroup(new InstantCommand(() -> pivot.postitionToIndex()),
     new InstantCommand(() -> intake.Take()),
     new InstantCommand(() -> indexter.indexTheFrootLoop()), 
-    new InstantCommand(() -> shooter.positionToSpit()));
+    new InstantCommand(() -> shooter.Spit()));
     }
 
     public Command ShootDaLoop()

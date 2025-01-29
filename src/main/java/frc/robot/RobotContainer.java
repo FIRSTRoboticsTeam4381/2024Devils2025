@@ -102,7 +102,8 @@ public class RobotContainer {
             specialist.a().onTrue(shooter.Spit());
             specialist.a().onFalse(shooter.stopspit());
 
-            specialist.leftBumper().onTrue(Hang.moveMotors);
+            specialist.leftBumper().onTrue(hang.moveMotors());
+            
 
 
              specialist.back().onTrue

@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
+import frc.robot.commands.SparkPosition;
 
 
 
@@ -85,6 +86,8 @@ public Command postitionToIndex()
     ).withName("Postition to shoot Frooty Loopy Thingy");
     
 }
-
-
+public Command level1(){return new SparkPosition(motor1, 1, 0.5, null);}
+public Command level2(){return new SparkPosition(motor1, 2, 0.5, null);}
+public Command level3(){return new SparkPosition(motor1, 3, 0.5, null);}
+public Command level4(){return new SparkPosition(motor1, , 0.5, null);}
 }

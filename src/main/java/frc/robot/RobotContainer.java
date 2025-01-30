@@ -100,11 +100,14 @@ public class RobotContainer {
             specialist.x().onFalse(intake.stopspinningthing());
 
             specialist.a().onTrue(shooter.Spit());
-            specialist.a().onFalse(shooter.stopspit());
+            specialist.a().onFalse(shooter.stopSpit());
 
             specialist.leftBumper().onTrue(hang.moveMotors());
-            
 
+            specialist.povUp()
+            specialist.povDown()
+            specialist.povLeft()
+            specialist.povRight()
 
              specialist.back().onTrue
              (

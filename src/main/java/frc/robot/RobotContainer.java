@@ -104,10 +104,10 @@ public class RobotContainer {
 
             specialist.leftBumper().onTrue(hang.moveMotors());
 
-            specialist.povUp()
-            specialist.povDown()
-            specialist.povLeft()
-            specialist.povRight()
+            specialist.povUp().onTrue(pivot.level4());
+            specialist.povDown().onTrue(pivot.level1());
+            specialist.povLeft().onTrue(pivot.level2());
+            specialist.povRight().onTrue(pivot.level3());
 
              specialist.back().onTrue
              (

@@ -99,8 +99,8 @@ public class RobotContainer {
           specialist.x().whileTrue(intake.Take());
             //specialist.x().onFalse(intake.stopspinningthing());
 
-            specialist.a().onTrue(shooter.Spit());
-            specialist.a().onFalse(shooter.doNotSpit());
+            specialist.a().whileTrue(shooter.Spit());
+            //specialist.a().onFalse(shooter.doNotSpit());
 
             specialist.leftBumper().onTrue(hang.moveMotors());
 

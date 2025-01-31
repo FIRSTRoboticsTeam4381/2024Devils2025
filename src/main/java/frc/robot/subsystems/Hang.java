@@ -41,8 +41,8 @@ return new RepeatCommand
   //Creates a new Pivot.
   public Hang() {
 
-    motorHang1 = new SparkMax(50, MotorType.kBrushless);
-    motorHang2 = new SparkMax(51, MotorType.kBrushless);
+    motorHang1 = new SparkMax(53, MotorType.kBrushless);
+    motorHang2 = new SparkMax(54, MotorType.kBrushless);
     
 
 

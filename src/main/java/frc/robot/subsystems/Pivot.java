@@ -89,5 +89,5 @@ public Command postitionToIndex()
 public Command level1(){return new SparkPosition(motor1, 1, 0.5, null);}
 public Command level2(){return new SparkPosition(motor1, 2, 0.5, null);}
 public Command level3(){return new SparkPosition(motor1, 3, 0.5, null);}
-public Command level4(){return new SparkPosition(motor1, , 0.5, null);}
+public Command level4(){return new SparkPosition(motor1, 4, 0.5, null);}
 }

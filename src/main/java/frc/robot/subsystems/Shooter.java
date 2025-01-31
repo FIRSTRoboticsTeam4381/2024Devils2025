@@ -81,7 +81,15 @@ public Command stopspit()
     
 }   
 
+public Command doNotSpit()
+{
+ return new InstantCommand(() -> motor10.set(0), this);
+}
 
+public Command doSpit()
+{
+ return new InstantCommand(() -> motor10.set(1), this);
+}
   @Override
   public void periodic() 
   {
@@ -90,3 +98,5 @@ public Command stopspit()
   }
   
 }
+
+

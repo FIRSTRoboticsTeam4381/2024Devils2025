@@ -80,9 +80,9 @@ this)
 public Command postitionToIndex()
 {
   return new SequentialCommandGroup
-    ( new InstantCommand(() -> motor1.set(0.4)),
+    ( new InstantCommand(() -> motor1.set(0.4), this),
       new WaitCommand(1),
-      new InstantCommand(() -> motor1.set(0))
+      new InstantCommand(() -> motor1.set(0), this)
     ).withName("Postition to shoot Frooty Loopy Thingy");
     
 }

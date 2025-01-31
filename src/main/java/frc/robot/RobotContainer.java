@@ -96,8 +96,8 @@ public class RobotContainer {
           pivot.setDefaultCommand(pivot.joystickControl(specialist::getLeftY));
 
 
-          specialist.x().onTrue(intake.Take());
-            specialist.x().onFalse(intake.stopspinningthing());
+          specialist.x().whileTrue(intake.Take());
+            //specialist.x().onFalse(intake.stopspinningthing());
 
             specialist.a().onTrue(shooter.Spit());
             specialist.a().onFalse(shooter.doNotSpit());

@@ -69,9 +69,9 @@ this)
 
 public Command indexTheFrootLoop()
 {return new SequentialCommandGroup
-  ( new InstantCommand(() -> motor1.set(0.4)),
+  ( new InstantCommand(() -> motor1.set(0.4), this),
     new WaitUntilCommand(() -> !brakeBeam1.get()),
-    new InstantCommand(() -> motor1.set(0))
+    new InstantCommand(() -> motor1.set(0), this)
   );
 
 

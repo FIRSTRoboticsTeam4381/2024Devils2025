@@ -85,13 +85,20 @@ this)
 public Command moveMotors()
 {
   return new SequentialCommandGroup
-    ( new InstantCommand(() -> motorHang1.set(1)),
-      new InstantCommand(() -> motorHang2.set(1)),
+    ( new InstantCommand(() -> motorHang1.set(1), this),
+      new InstantCommand(() -> motorHang2.set(1), this),
       new WaitCommand(1),
+<<<<<<< HEAD
       new InstantCommand(() -> motorHang1.set(-1)),
       new InstantCommand(() -> motorHang2.set(-1))
     ).withName("Moving Motors To Imagine Hanging");
     
+=======
+      new InstantCommand(() -> motorHang1.set(-1), this),
+      new InstantCommand(() -> motorHang2.set(-1), this)
+    ).withName("Postition_to_shoot_Froot_Loopy_sThingy");
+  
+>>>>>>> origin/master
 }
 
 

@@ -62,7 +62,7 @@ public class Intake extends SubsystemBase {
        (killed) -> {},
         () -> {return false;},
           this)
-      ); 
+    );
   }
  
 

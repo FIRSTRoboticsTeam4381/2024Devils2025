@@ -97,7 +97,7 @@ public class RobotContainer {
 
 
           specialist.x().onTrue(intake.Take());
-            specialist.x().onFalse(intake.stopspinningthing());
+            specialist.x().onFalse(intake.stopSpinningThing());
 
             specialist.a().onTrue(shooter.Spit());
             specialist.a().onFalse(shooter.stopSpit());

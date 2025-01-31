@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.pathplanner.lib.pathfinding.LocalADStar.GridPosition;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
@@ -44,6 +45,7 @@ public class Indexter extends SubsystemBase {
     motor1.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
     
+
     
 
 this.setDefaultCommand(
@@ -72,8 +74,14 @@ public Command indexTheFrootLoop()
     new InstantCommand(() -> motor1.set(0))
   );
 
+
+}
+
+
+
+
+
 }
 
 
 
-}

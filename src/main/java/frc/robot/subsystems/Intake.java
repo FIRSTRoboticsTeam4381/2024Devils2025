@@ -55,15 +55,14 @@ public class Intake extends SubsystemBase {
 
     intakemotor2.configure(intakemotor2Config , ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-     this.setDefaultCommand(
+     this.setDefaultCommand
+     (
       new FunctionalCommand(()-> {intakemotor1.set(0);},
       () -> {},
        (killed) -> {},
         () -> {return false;},
           this)
-    );
-
-
+      ); 
   }
  
 
@@ -73,7 +72,11 @@ public Command Take()
     return new InstantCommand(() -> intakemotor1.set(1), this);
 }
   
+public Command stopspinningthing()
 
+{
+    return new InstantCommand(() -> intakemotor1.set(0), this);
+}
 
   @Override
   public void periodic() 

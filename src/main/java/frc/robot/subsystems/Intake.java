@@ -38,8 +38,8 @@ public class Intake extends SubsystemBase {
   private SparkMax intakemotor2;
   /** Creates a new Intake. */
   public Intake() {
-  intakemotor1 = new SparkMax(60, MotorType.kBrushless);
-  intakemotor2 = new SparkMax(61, MotorType.kBrushless);
+  intakemotor1 = new SparkMax(45, MotorType.kBrushless);
+  intakemotor2 = new SparkMax(46, MotorType.kBrushless);
      
   SparkMaxConfig intakemotor1Config = new SparkMaxConfig();
   SparkMaxConfig intakemotor2Config = new SparkMaxConfig();

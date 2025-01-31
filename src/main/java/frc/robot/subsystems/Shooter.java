@@ -39,8 +39,8 @@ public class Shooter extends SubsystemBase {
   private SparkMax motor20;
   /** Creates a new Intake. */
   public Shooter() {
-  motor10 = new SparkMax(60, MotorType.kBrushless);
-  motor20 = new SparkMax(61, MotorType.kBrushless);
+  motor10 = new SparkMax(48, MotorType.kBrushless);
+  motor20 = new SparkMax(49, MotorType.kBrushless);
      
   SparkMaxConfig motor10Config = new SparkMaxConfig();
   SparkMaxConfig motor20Config = new SparkMaxConfig();

@@ -29,7 +29,7 @@ public class Indexter extends SubsystemBase {
   /** Creates a new Indexter. */
   public Indexter() {
 
-    motor1 = new SparkMax(50, MotorType.kBrushless);
+    motor1 = new SparkMax(9, MotorType.kBrushless);
     brakeBeam1 = new DigitalInput(1);
     brakeBeam2 = new DigitalInput(2);
     

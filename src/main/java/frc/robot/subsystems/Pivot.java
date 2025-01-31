@@ -42,8 +42,8 @@ return new RepeatCommand
   //Creates a new Pivot.
   public Pivot() {
 
-    motor1 = new SparkMax(50, MotorType.kBrushless);
-    motor3 = new SparkMax(51, MotorType.kBrushless);
+    motor1 = new SparkMax(51, MotorType.kBrushless);
+    motor3 = new SparkMax(52, MotorType.kBrushless);
     
 
 

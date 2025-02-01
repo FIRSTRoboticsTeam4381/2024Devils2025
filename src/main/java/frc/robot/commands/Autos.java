@@ -23,9 +23,12 @@ public final class Autos {
         return new PreviewAuto("Test");
     }
     public static PreviewAuto AutoOne(){
-        return new PreviewAuto("Autogood");
-    }
+        return new PreviewAuto("Autogood");}
 
+        public static PreviewAuto BargeandReefAuto(){
+            return new PreviewAuto("Barge & Reef Auto");
+        }
+    
     /**
      * Blank Autonomous to be used as default dashboard option
      * @return Autonomous command

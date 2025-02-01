@@ -22,6 +22,9 @@ public final class Autos {
     public static PreviewAuto testAuto(){
         return new PreviewAuto("Test");
     }
+    public static PreviewAuto AutoOne(){
+        return new PreviewAuto("Autogood");
+    }
 
     /**
      * Blank Autonomous to be used as default dashboard option

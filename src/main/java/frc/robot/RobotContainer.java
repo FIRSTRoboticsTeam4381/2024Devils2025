@@ -72,6 +72,7 @@ public class RobotContainer {
     autoChooser.setDefaultOption("None", Autos.none());
     autoChooser.addOption("Test", Autos.testAuto());
     autoChooser.addOption("Autocool", Autos.AutoOne());
+    autoChooser.addOption("Barge & Reef Auto", Autos.BargeandReefAuto());
 
     // Add auto controls to the dashboard
     SmartDashboard.putData("Choose Auto:", autoChooser);

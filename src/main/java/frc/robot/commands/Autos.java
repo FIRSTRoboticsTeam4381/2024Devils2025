@@ -22,8 +22,8 @@ public final class Autos {
     public static PreviewAuto testAuto(){
         return new PreviewAuto("Test");
     }
-    public static PreviewAuto AutoOne(){
-        return new PreviewAuto("Autogood");}
+    public static PreviewAuto AutoCool(){
+        return new PreviewAuto("AutoCool");}
 
         public static PreviewAuto BargeandReefAuto(){
             return new PreviewAuto("Barge & Reef Auto");

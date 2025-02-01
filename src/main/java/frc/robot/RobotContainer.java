@@ -71,7 +71,7 @@ public class RobotContainer {
     // Add any autos you want to be able to select below
     autoChooser.setDefaultOption("None", Autos.none());
     autoChooser.addOption("Test", Autos.testAuto());
-    autoChooser.addOption("Autocool", Autos.AutoOne());
+    autoChooser.addOption("Autocool", Autos.AutoCool());
 
     // Add auto controls to the dashboard
     SmartDashboard.putData("Choose Auto:", autoChooser);
@@ -103,7 +103,7 @@ public class RobotContainer {
             //specialist.a().onFalse(shooter.doNotSpit());
 
             specialist.leftBumper().onTrue(hang.moveMotors());
-
+          
             specialist.povUp().onTrue(pivot.level4());
             specialist.povDown().onTrue(pivot.level1());
             specialist.povLeft().onTrue(pivot.level2());

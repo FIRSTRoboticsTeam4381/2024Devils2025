@@ -3,6 +3,7 @@
   "waypoints": [
     {
       "anchor": {
+<<<<<<<< HEAD:src/main/deploy/pathplanner/paths/Barge to Pickup #2.path
         "x": 6.3375,
         "y": 5.897
       },
@@ -10,18 +11,36 @@
       "nextControl": {
         "x": 3.16875,
         "y": 6.423500000000001
+========
+        "x": 5.5965,
+        "y": 5.6922500000000005
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 4.96275,
+        "y": 6.3942499999999995
+>>>>>>>> origin/master:src/main/deploy/pathplanner/paths/Path Part 2.path
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
+<<<<<<<< HEAD:src/main/deploy/pathplanner/paths/Barge to Pickup #2.path
         "x": 1.2089999999999999,
         "y": 4.81475
       },
       "prevControl": {
         "x": 1.7745,
         "y": 5.06825
+========
+        "x": 2.13525,
+        "y": 5.7995
+      },
+      "prevControl": {
+        "x": 2.8177499999999993,
+        "y": 5.6825
+>>>>>>>> origin/master:src/main/deploy/pathplanner/paths/Path Part 2.path
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +61,21 @@
   },
   "goalEndState": {
     "velocity": 0,
+<<<<<<<< HEAD:src/main/deploy/pathplanner/paths/Barge to Pickup #2.path
     "rotation": -87.13759477388824
+========
+    "rotation": 180.0
+>>>>>>>> origin/master:src/main/deploy/pathplanner/paths/Path Part 2.path
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
+<<<<<<<< HEAD:src/main/deploy/pathplanner/paths/Barge to Pickup #2.path
     "rotation": -2.5791475002834208
+========
+    "rotation": -120.34324888423959
+>>>>>>>> origin/master:src/main/deploy/pathplanner/paths/Path Part 2.path
   },
   "useDefaultConstraints": true
 }

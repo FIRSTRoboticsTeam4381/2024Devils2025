@@ -53,10 +53,10 @@ public class TeleopSwerve extends Command{
 
         
 
-        /* Deadbands */
-        //yAxis = (Math.abs(yAxis) < Constants.stickDeadband) ? 0 : yAxis;
-        //xAxis = (Math.abs(xAxis) < Constants.stickDeadband) ? 0 : xAxis;
-        //rAxis = (Math.abs(rAxis) < Constants.stickDeadband) ? 0 : rAxis;
+        // Deadbands
+        yAxis = (Math.abs(yAxis) < Constants.stickDeadband) ? 0 : yAxis;
+        xAxis = (Math.abs(xAxis) < Constants.stickDeadband) ? 0 : xAxis;
+        rAxis = (Math.abs(rAxis) < Constants.stickDeadband) ? 0 : rAxis;
 
         /* Slow Trigger */
         double slowdown = (slow.get() ? .25 : 1);

@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
+import frc.robot.Constants;
 import frc.robot.commands.SparkPosition;
 
 
@@ -36,7 +37,7 @@ public class Pivot extends SubsystemBase {
 {
 return new RepeatCommand
 (
-  new InstantCommand(() -> motor1.set(input.get()), this)
+  new InstantCommand(() -> motor1.set((Math.abs(input.get()) < Constants.stickDeadband) ? 0 : input.get()), this)
 );
 }
   //Creates a new Pivot.
@@ -48,12 +49,18 @@ return new RepeatCommand
 
 
     SparkMaxConfig motor1Config = new SparkMaxConfig();
+    SparkMaxConfig motor3Config = new SparkMaxConfig();
 
     motor1Config
     .smartCurrentLimit(30)
     .idleMode(IdleMode.kCoast);
 
     motor1.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    
+    motor3Config
+    .smartCurrentLimit(30)
+    .idleMode(IdleMode.kCoast).follow(motor1.getDeviceId(), true);
+    motor3.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
     
 

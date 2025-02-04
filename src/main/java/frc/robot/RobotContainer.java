@@ -95,6 +95,7 @@ public class RobotContainer {
              true, driver.leftBumper()::getAsBoolean));
 
           pivot.setDefaultCommand(pivot.joystickControl(specialist::getLeftY));
+          hang.setDefaultCommand(hang.joystickControl(specialist::getRightY));
 
 
           specialist.x().whileTrue(intake.Take());
@@ -102,8 +103,6 @@ public class RobotContainer {
 
             specialist.a().whileTrue(shooter.Spit());
             //specialist.a().onFalse(shooter.doNotSpit());
-
-            specialist.leftBumper().onTrue(hang.moveMotors());
           
             specialist.povUp().onTrue(pivot.level4());
             specialist.povDown().onTrue(pivot.level1());

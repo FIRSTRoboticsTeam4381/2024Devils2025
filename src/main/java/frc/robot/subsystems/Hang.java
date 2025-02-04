@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
+import frc.robot.Constants;
 
 
 
@@ -35,8 +36,7 @@ public class Hang extends SubsystemBase {
 {
 return new RepeatCommand
 (
-  new InstantCommand(() -> motorHang1.set(input.get()), this)
-);
+  new InstantCommand(() -> motorHang1.set((Math.abs(input.get()) < Constants.stickDeadband) ? 0 : input.get()), this));
 }
   //Creates a new Pivot.
   public Hang() {
@@ -57,7 +57,7 @@ return new RepeatCommand
     motorHang2Config.apply(motorHang1Config);
     motorHang2Config.follow(motorHang1, true);
 
-    motorHang2.configure(motorHang2Config , ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    motorHang2.configure(motorHang2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     
 
 this.setDefaultCommand(

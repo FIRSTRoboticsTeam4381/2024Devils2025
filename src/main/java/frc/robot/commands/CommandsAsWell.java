@@ -40,10 +40,10 @@ public class CommandsAsWell
  public ParallelCommandGroup GrabFrootLoop()
  { 
     return new ParallelCommandGroup(
-    new InstantCommand(() -> pivot.postitionToIndex()),
-    new InstantCommand(() -> intake.Take()),
-    new InstantCommand(() -> indexter.indexTheFrootLoop()), 
-    new InstantCommand(() -> shooter.doSpit()));
+    //pivot.postitionToIndex(),
+    intake.Take(),
+    //indexter.indexTheFrootLoop());
+    indexter.Take());
     }
 
     public Command ShootDaLoop()

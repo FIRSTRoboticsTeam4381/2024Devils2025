@@ -38,15 +38,15 @@ public class Pivot extends SubsystemBase {
   {
     return new RepeatCommand
       (
-        new InstantCommand(() -> motor1.set((Math.abs(input.get()) < Constants.stickDeadband) ? 0 : -input.get()), this)
+        new InstantCommand(() -> motor1.set((Math.abs(input.get()) < Constants.stickDeadband) ? 0 : input.get()), this)
       );
   }
 
   //Creates a new Pivot.
   public Pivot() {
 
-    motor1 = new SparkMax(51, MotorType.kBrushless);
-    motor3 = new SparkMax(52, MotorType.kBrushless);
+    motor1 = new SparkMax(52, MotorType.kBrushless);
+    motor3 = new SparkMax(51, MotorType.kBrushless);
     
 
 
@@ -90,11 +90,8 @@ this)
 
 public Command postitionToIndex()
 {
-  return new SequentialCommandGroup
-    ( new InstantCommand(() -> motor1.set(0.4), this),
-      new WaitCommand(1),
-      new InstantCommand(() -> motor1.set(0), this)
-    ).withName("Postition to shoot Frooty Loopy Thingy");
+  return new SparkPosition(motor1, 47, 5, this)
+    .withName("Postition to shoot Frooty Loopy Thingy");
     
 }
 public Command level1(){return new SparkPosition(motor1, 1, 0.5, this);}

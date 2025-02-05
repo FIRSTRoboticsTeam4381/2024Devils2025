@@ -51,7 +51,7 @@ public class Intake extends SubsystemBase {
     intakemotor1.configure (intakemotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
       intakemotor2Config.apply(intakemotor1Config);
-       intakemotor2Config.follow(intakemotor1, true);
+       intakemotor2Config.follow(intakemotor1);
 
     intakemotor2.configure(intakemotor2Config , ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
@@ -69,7 +69,7 @@ public class Intake extends SubsystemBase {
 public Command Take()
 
 {
-    return new InstantCommand(() -> intakemotor1.set(1), this).repeatedly();
+    return new InstantCommand(() -> intakemotor1.set(-0.51), this).repeatedly();
 }
   
 public Command stopspinningthing()

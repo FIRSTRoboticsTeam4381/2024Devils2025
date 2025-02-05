@@ -51,7 +51,7 @@ public class RobotContainer {
   public final Intake intake = new Intake();
   public final Hang hang = new Hang();
   
-  //public final CommandsAsWell commandsAsWell = new CommandsAsWell(indexter, pivot, intake, shooter);
+  public final CommandsAsWell commandsAsWell = new CommandsAsWell(indexter, pivot, intake, shooter, hang);
 
 
   //public final PhotonCam camA = new PhotonCam("Camera A", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(-7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/-4-Math.PI)) );
@@ -100,12 +100,13 @@ public class RobotContainer {
           hang.setDefaultCommand(hang.joystickControl(specialist::getRightY));
 
 
-          specialist.x().whileTrue(intake.Take());
-            //specialist.x().onFalse(intake.stopspinningthing());
+          
 
             specialist.a().whileTrue(shooter.Spit());
             //specialist.a().onFalse(shooter.doNotSpit());
           
+            specialist.x().whileTrue(commandsAsWell.GrabFrootLoop());
+
             specialist.povUp().onTrue(pivot.level4());
             specialist.povDown().onTrue(pivot.level1());
             specialist.povLeft().onTrue(pivot.level2());

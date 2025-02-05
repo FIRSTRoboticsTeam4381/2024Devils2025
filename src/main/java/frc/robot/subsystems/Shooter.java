@@ -52,12 +52,12 @@ public class Shooter extends SubsystemBase {
     motor10.configure (motor10Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
       motor20Config.apply(motor10Config);
-       motor20Config.follow(motor10, true);
+       
 
     motor20.configure(motor20Config , ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
      this.setDefaultCommand(
-      new FunctionalCommand(()-> {motor10.set(0);},
+      new FunctionalCommand(()-> {motor10.set(0);motor20.set(0);},
       () -> {},
        (killed) -> {},
         () -> {return false;},
@@ -66,12 +66,12 @@ public class Shooter extends SubsystemBase {
 
 
   }
- 
+    
 
 public Command Spit()
 
 {
-    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(1)) , new InstantCommand(() -> motor20.set(1), this)).withName("Shooter_shoot_Frooty_Loopy_Thingy").repeatedly();
+    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(-0.55)) , new InstantCommand(() -> motor20.set(-0.55), this)).withName("Shooter_shoot_Frooty_Loopy_Thingy").repeatedly();
     
 }   
 public Command stopspit()

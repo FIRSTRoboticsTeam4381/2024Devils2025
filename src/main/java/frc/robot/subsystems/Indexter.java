@@ -29,9 +29,9 @@ public class Indexter extends SubsystemBase {
   /** Creates a new Indexter. */
   public Indexter() {
 
-    motor1 = new SparkMax(9, MotorType.kBrushless);
-    brakeBeam1 = new DigitalInput(1);
-    brakeBeam2 = new DigitalInput(2);
+    motor1 = new SparkMax(47, MotorType.kBrushless);
+    brakeBeam2 = new DigitalInput(8);
+    brakeBeam1 = new DigitalInput(9);
     
     
 
@@ -64,13 +64,15 @@ this)
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putData(this);
+    SmartDashboard.putBoolean("Beam 1", brakeBeam1.get());
+    SmartDashboard.putBoolean("Beam 2", !brakeBeam2.get());
   }
 
 
 public Command indexTheFrootLoop()
 {return new SequentialCommandGroup
   ( new InstantCommand(() -> motor1.set(0.4), this),
-    new WaitUntilCommand(() -> !brakeBeam1.get()),
+    new WaitUntilCommand(() -> brakeBeam1.get()),
     new InstantCommand(() -> motor1.set(0), this)
   );
 
@@ -78,7 +80,11 @@ public Command indexTheFrootLoop()
 }
 
 
+public Command Take()
 
+{
+    return new InstantCommand(() -> motor1.set(0.52), this).repeatedly();
+}
 
 
 }

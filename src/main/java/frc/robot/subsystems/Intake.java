@@ -31,9 +31,6 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 
 @Logged
-
-
-
 public class Intake extends SubsystemBase {
 
   private SparkMax intakemotor1;

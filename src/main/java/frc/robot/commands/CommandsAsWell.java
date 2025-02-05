@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import com.pathplanner.lib.auto.NamedCommands;
 
+import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
@@ -17,6 +18,7 @@ import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Swerve;
 
 /** Add your docs here. */
+@Logged
 public class CommandsAsWell 
 { public Pivot pivot;
     public Indexter indexter;

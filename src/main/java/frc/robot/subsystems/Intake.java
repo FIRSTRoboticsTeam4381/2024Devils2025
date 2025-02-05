@@ -9,6 +9,7 @@ import com.revrobotics.spark.SparkMax;
 import static edu.wpi.first.units.Units.Seconds;
 
 import java.io.ObjectInputFilter.Config;
+import java.lang.ModuleLayer.Controller;
 import java.nio.file.Watchable;
 
 import com.revrobotics.spark.SparkBase.PersistMode;
@@ -18,6 +19,7 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 import edu.wpi.first.epilogue.Logged;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -69,7 +71,9 @@ public class Intake extends SubsystemBase {
 public Command Take()
 
 {
-    return new InstantCommand(() -> intakemotor1.set(-0.51), this).repeatedly();
+
+    return new InstantCommand(() -> intakemotor1.set(1), this).repeatedly();
+
 }
   
 public Command stopspinningthing()

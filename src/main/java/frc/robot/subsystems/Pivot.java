@@ -33,13 +33,15 @@ import frc.robot.commands.SparkPosition;
 public class Pivot extends SubsystemBase {
   private SparkMax motor1;
   private SparkMax motor3;
+
   public Command joystickControl(Supplier<Double> input)
-{
-return new RepeatCommand
-(
-  new InstantCommand(() -> motor1.set((Math.abs(input.get()) < Constants.stickDeadband) ? 0 : input.get()), this)
-);
-}
+  {
+    return new RepeatCommand
+      (
+        new InstantCommand(() -> motor1.set((Math.abs(input.get()) < Constants.stickDeadband) ? 0 : -input.get()), this)
+      );
+  }
+
   //Creates a new Pivot.
   public Pivot() {
 
@@ -53,14 +55,16 @@ return new RepeatCommand
 
     motor1Config
     .smartCurrentLimit(30)
-    .idleMode(IdleMode.kCoast);
+    .idleMode(IdleMode.kBrake);
 
     motor1.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     
     motor3Config
     .smartCurrentLimit(30)
-    .idleMode(IdleMode.kCoast).follow(motor1.getDeviceId(), true);
-    motor3.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    .idleMode(IdleMode.kBrake)
+    .follow(motor1.getDeviceId(), true);
+    
+    motor3.configure(motor3Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
     
 

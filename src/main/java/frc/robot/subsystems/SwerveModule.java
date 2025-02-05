@@ -121,11 +121,11 @@ public class SwerveModule {
 
          if(isOpenLoop){ // TELEOP 
             double percentOutput = desiredState.speedMetersPerSecond / Constants.Swerve.maxSpeed; 
-            mDriveMotor.set(percentOutput * -1); // TODO remove when inverting works
+            mDriveMotor.set(percentOutput); // TODO remove when inverting works
         } 
         else{ // AUTO 
             double velocity = Conversions.MPStoRPM(desiredState.speedMetersPerSecond, Constants.Swerve.wheelCircumference, Constants.Swerve.driveGearRatio); //TODO update for neos? 
-            mDriveMotor.getClosedLoopController().setReference(velocity * -1, ControlType.kVelocity, ClosedLoopSlot.kSlot0, feedforward.calculate(desiredState.speedMetersPerSecond * -1)); // TODO fix when inverts work
+            mDriveMotor.getClosedLoopController().setReference(velocity, ControlType.kVelocity, ClosedLoopSlot.kSlot0, feedforward.calculate(desiredState.speedMetersPerSecond * -1)); // TODO fix when inverts work
         } 
 
         //double angle = (Math.abs(desiredState.speedMetersPerSecond) <= (Constants.Swerve.maxSpeed * 0.01)) ? lastAngle : desiredState.angle.getDegrees(); //Prevent rotating module if speed is less than 1%. Prevents jittering.

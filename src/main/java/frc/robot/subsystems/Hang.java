@@ -36,7 +36,7 @@ public class Hang extends SubsystemBase {
 {
 return new RepeatCommand
 (
-  new InstantCommand(() -> motorHang1.set((Math.abs(input.get()) < Constants.stickDeadband) ? 0 : input.get()), this));
+  new InstantCommand(() -> motorHang1.set((Math.abs(input.get()) < Constants.stickDeadband) ? 0 : -input.get()), this));
 }
   //Creates a new Pivot.
   public Hang() {

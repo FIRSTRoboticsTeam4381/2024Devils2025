@@ -8,6 +8,8 @@ import java.util.function.Supplier;
 
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.math.geometry.Transform3d;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.util.Units;
@@ -112,6 +114,10 @@ public class RobotContainer {
              specialist.back().onTrue
              (
                 new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
+
+    driver.start()
+            .onTrue(new InstantCommand(() -> swerve.zeroGyro())
+            .alongWith(new InstantCommand(() -> swerve.resetOdometry(new Pose2d(0.0, 0.0, Rotation2d.fromDegrees(0))))));
   }
 
   public Command getAutonomousCommand() {

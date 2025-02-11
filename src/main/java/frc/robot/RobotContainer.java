@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ScheduleCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.Autos;
 import frc.robot.commands.CommandsAsWell;
@@ -37,8 +38,10 @@ import frc.robot.subsystems.Swerve;
 public class RobotContainer {
   
   // Controllers
-  public final CommandXboxController driver = new CommandXboxController(0);
-  public final CommandXboxController specialist = new CommandXboxController(1);
+  //public final CommandXboxController driver = new CommandXboxController(0);
+  //public final CommandXboxController specialist = new CommandXboxController(1);
+  public final CommandPS4Controller driver = new CommandPS4Controller(0);
+  public final CommandPS4Controller specialist = new CommandPS4Controller(1);
 
   //Auto Chooser
   SendableChooser<Autos.PreviewAuto> autoChooser = new SendableChooser<>();
@@ -94,7 +97,7 @@ public class RobotContainer {
           //interpolateJoystick(driver::getLeftY,0.05),
           //interpolateJoystick(driver::getLeftX,0.05), 
           interpolateJoystick (driver::getRightX,0.05),
-             true, driver.leftBumper()::getAsBoolean));
+             true, driver.L1()::getAsBoolean));
 
           pivot.setDefaultCommand(pivot.joystickControl(specialist::getLeftY));
           hang.setDefaultCommand(hang.joystickControl(specialist::getRightY));
@@ -102,21 +105,21 @@ public class RobotContainer {
 
           
 
-            specialist.a().whileTrue(shooter.Spit());
+            specialist.cross().whileTrue(shooter.Spit());
             //specialist.a().onFalse(shooter.doNotSpit());
           
-            specialist.x().whileTrue(commandsAsWell.GrabFrootLoop());
+            specialist.square().whileTrue(commandsAsWell.GrabFrootLoop());
 
             specialist.povUp().onTrue(pivot.level4());
             specialist.povDown().onTrue(pivot.level1());
             specialist.povLeft().onTrue(pivot.level2());
             specialist.povRight().onTrue(pivot.level3());
 
-             specialist.back().onTrue
+             specialist.touchpad().onTrue
              (
                 new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
 
-    driver.start()
+    driver.options()
             .onTrue(new InstantCommand(() -> swerve.zeroGyro())
             .alongWith(new InstantCommand(() -> swerve.resetOdometry(new Pose2d(0.0, 0.0, Rotation2d.fromDegrees(0))))));
   }

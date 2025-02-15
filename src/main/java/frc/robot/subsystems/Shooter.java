@@ -74,11 +74,18 @@ public Command Spit()
 public Command stopspit()
 
 {
-    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(0)) , new InstantCommand(() -> motor20.set(0), this)).withName("stop_shoot_frooty_loopy_think");
+    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(0)) , new InstantCommand(() -> motor20.set(0), this)).withName("Stop_Shooty_Frooty_Loopy_Thingy");
     
 }   
 
-public Command doNotSpit()
+public void setVelocity(double RPM)
+
+{
+    motor10.getClosedLoopController().setReference();
+    
+}   
+
+/*public Command doNotSpit()
 {
  return new InstantCommand(() -> motor10.set(0), this);
 }
@@ -86,7 +93,7 @@ public Command doNotSpit()
 public Command doSpit()
 {
  return new InstantCommand(() -> motor10.set(1), this);
-}
+}*/
   @Override
   public void periodic() 
   {

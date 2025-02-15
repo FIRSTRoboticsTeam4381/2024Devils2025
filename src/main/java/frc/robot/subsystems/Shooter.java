@@ -91,6 +91,12 @@ public Command Shooter(double RPM)
  return new FunctionalCommand(() -> setVelocity(RPM), () -> {}, (interuppted) -> {}, null, null);
 }
 
+public void setPresent( double RPM)
+{
+  motor10.set(RPM);
+  motor20.set(RPM);
+
+}
 /*public Command doNotSpit()
 {
  return new InstantCommand(() -> motor10.set(0), this);

@@ -103,7 +103,7 @@ public class RobotContainer {
           hang.setDefaultCommand(hang.joystickControl(specialist::getRightY));
 
 
-          specialist.R3().toggleOnTrue(shooter.shooter(1000));
+          specialist.R3().toggleOnTrue(shooter.shooter(3000));
 
             specialist.cross().whileTrue(shooter.Spit());
             //specialist.a().onFalse(shooter.doNotSpit());

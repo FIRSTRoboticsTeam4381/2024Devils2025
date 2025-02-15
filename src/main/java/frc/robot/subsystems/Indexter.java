@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 @Logged
 public class Indexter extends SubsystemBase {
   private SparkMax motor1;
-  private SparkMax motor3;
+
   private DigitalInput brakeBeam1;
   private DigitalInput brakeBeam2;
   /** Creates a new Indexter. */

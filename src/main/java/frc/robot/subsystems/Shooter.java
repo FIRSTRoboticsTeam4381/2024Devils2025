@@ -63,6 +63,9 @@ public class Shooter extends SubsystemBase {
           this)
     );
 
+    motor10.getEncoder().getVelocity();
+    motor20.getEncoder().getVelocity();
+
 
   }
     
@@ -83,8 +86,8 @@ public Command stopspit()
 public void setVelocity(double RPM)
 
 {
-    motor10.getClosedLoopController().setReference(RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
-    motor20.getClosedLoopController().setReference(RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
+    motor10.getClosedLoopController().setReference(-RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
+    motor20.getClosedLoopController().setReference(-RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
 }   
 public Command shooter(double RPM)
 {

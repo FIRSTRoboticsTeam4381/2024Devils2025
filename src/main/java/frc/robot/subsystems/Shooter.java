@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.spark.ClosedLoopSlot;
 import com.revrobotics.spark.SparkMax;
 
 import static edu.wpi.first.units.Units.Seconds;
@@ -11,6 +12,7 @@ import static edu.wpi.first.units.Units.Seconds;
 import java.io.ObjectInputFilter.Config;
 import java.nio.file.Watchable;
 
+import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
@@ -74,11 +76,18 @@ public Command Spit()
 public Command stopspit()
 
 {
-    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(0)) , new InstantCommand(() -> motor20.set(0), this)).withName("stop_shoot_frooty_loopy_think");
+    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(0)) , new InstantCommand(() -> motor20.set(0), this)).withName("Stop_Shooty_Frooty_Loopy_Thingy");
     
 }   
 
-public Command doNotSpit()
+public void setVelocity(double RPM)
+
+{
+    motor10.getClosedLoopController().setReference(RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
+    motor20.getClosedLoopController().setReference(RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
+}   
+
+/*public Command doNotSpit()
 {
  return new InstantCommand(() -> motor10.set(0), this);
 }
@@ -86,7 +95,7 @@ public Command doNotSpit()
 public Command doSpit()
 {
  return new InstantCommand(() -> motor10.set(1), this);
-}
+}*/
   @Override
   public void periodic() 
   {

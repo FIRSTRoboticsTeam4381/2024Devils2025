@@ -27,6 +27,7 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 import frc.robot.Constants;
 import frc.robot.commands.SparkPosition;
+import edu.wpi.first.math.Matrix;
 
 
 @Logged

@@ -24,7 +24,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
-@Logged
 public class PhotonCam extends SubsystemBase { 
   PhotonCamera cam ;
   StructPublisher<Pose3d> publisher;

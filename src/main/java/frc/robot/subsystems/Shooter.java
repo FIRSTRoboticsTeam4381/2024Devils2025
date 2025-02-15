@@ -87,6 +87,12 @@ public void setVelocity(double RPM)
     motor20.getClosedLoopController().setReference(RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
 }   
 
+public void setPresent( double RPM)
+{
+  motor10.set(RPM);
+  motor20.set(RPM);
+
+}
 /*public Command doNotSpit()
 {
  return new InstantCommand(() -> motor10.set(0), this);

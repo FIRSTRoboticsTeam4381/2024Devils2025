@@ -54,7 +54,7 @@ public class RobotContainer {
   public final Intake intake = new Intake();
   public final Hang hang = new Hang();
   
-  public final CommandsAsWell commandsAsWell = new CommandsAsWell(indexter, pivot, intake, shooter, hang);
+  public final CommandsAsWell commandsAsWell = new CommandsAsWell(specialist, indexter, pivot, intake, shooter, hang);
 
 
   //public final PhotonCam camA = new PhotonCam("Camera A", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(-7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/-4-Math.PI)) );
@@ -107,17 +107,16 @@ public class RobotContainer {
 
             specialist.cross().whileTrue(shooter.Spit());
             //specialist.a().onFalse(shooter.doNotSpit());
-          
-            specialist.square().whileTrue(commandsAsWell.GrabFrootLoop());
+            specialist.triangle().whileTrue(indexter.indexTheFrootLoop());
+            specialist.square().toggleOnTrue(commandsAsWell.GrabFrootLoop());
 
-            specialist.povUp().onTrue(pivot.level4());
+           // specialist.povUp().onTrue(pivot.level4());
             specialist.povDown().onTrue(pivot.level1());
             specialist.povLeft().onTrue(pivot.level2());
-            specialist.povRight().onTrue(pivot.level3());
+           // specialist.povRight().onTrue(pivot.level3());
 
-             specialist.touchpad().onTrue
-             (
-                new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
+             specialist.touchpad().or(driver.touchpad()).onTrue
+             (new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
 
     driver.options()
             .onTrue(new InstantCommand(() -> swerve.zeroGyro())

@@ -69,7 +69,7 @@ public Command Take()
 
 {
 
-    return new InstantCommand(() -> intakemotor1.set(1), this).repeatedly();
+    return new InstantCommand(() -> intakemotor1.set(-0.5), this).repeatedly();
 
 }
   

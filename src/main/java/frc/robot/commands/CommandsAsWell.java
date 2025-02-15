@@ -10,6 +10,9 @@ import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
 import frc.robot.subsystems.Hang;
 import frc.robot.subsystems.Indexter;
 import frc.robot.subsystems.Intake;
@@ -25,13 +28,15 @@ public class CommandsAsWell
     public Intake intake;
     public Shooter shooter;
     public Hang hang;
-    public CommandsAsWell(Indexter indexter, Pivot pivot, Intake intake, Shooter shooter, Hang hang)
+    public CommandPS4Controller controller;
+    public CommandsAsWell(CommandPS4Controller controller, Indexter indexter, Pivot pivot, Intake intake, Shooter shooter, Hang hang)
     {
         this.pivot = pivot;
         this.indexter = indexter;
         this.intake = intake;
         this.shooter = shooter;
         this.hang = hang;
+        this.controller = controller;
         NamedCommands.registerCommand("Grab Froot Loop", GrabFrootLoop());
         NamedCommands.registerCommand("Shoot the Loop", ShootDaLoop());
     }
@@ -39,13 +44,19 @@ public class CommandsAsWell
  
 
 
- public ParallelCommandGroup GrabFrootLoop()
+ public Command  GrabFrootLoop()
  { 
-    return new ParallelCommandGroup(
-    //pivot.postitionToIndex(),
-    intake.Take(),
-    //indexter.indexTheFrootLoop());
-    indexter.Take());
+    return new SequentialCommandGroup
+        ( new ParallelCommandGroup(pivot.postitionToIndex(), 
+        new ParallelRaceGroup(
+            intake.Take(),
+            indexter.breakBeam(1)
+        )),
+            new ParallelRaceGroup(
+                pivot.joystickControl(controller::getLeftY),
+                indexter.breakBeam(2)
+            )
+        );
     }
 
     public Command ShootDaLoop()

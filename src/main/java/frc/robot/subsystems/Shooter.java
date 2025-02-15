@@ -45,13 +45,16 @@ public class Shooter extends SubsystemBase {
   SparkMaxConfig motor20Config = new SparkMaxConfig();
 
   motor10Config
-     .smartCurrentLimit(30)
+     .smartCurrentLimit(60)
      .idleMode(IdleMode.kCoast);
-    
+    motor10Config.closedLoop.p(0.001).i(0).d(0.001).velocityFF(0.00015);
     motor10.configure (motor10Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
       motor20Config.apply(motor10Config);
-       
+      motor20Config
+      .smartCurrentLimit(60)
+      .idleMode(IdleMode.kCoast);
+     motor20Config.closedLoop.p(0.0005).i(0).d(0.015).velocityFF(0.00015);
 
     motor20.configure(motor20Config , ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
@@ -73,7 +76,7 @@ public class Shooter extends SubsystemBase {
 public Command Spit()
 
 {
-    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(-0.55)) , new InstantCommand(() -> motor20.set(-0.55), this)).withName("Shooter_shoot_Frooty_Loopy_Thingy").repeatedly();
+    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(-0.65)) , new InstantCommand(() -> motor20.set(-0.50), this)).withName("Shooter_shoot_Frooty_Loopy_Thingy").repeatedly();
     
 }   
 public Command stopspit()
@@ -87,7 +90,7 @@ public void setVelocity(double RPM)
 
 {
     motor10.getClosedLoopController().setReference(-RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
-    motor20.getClosedLoopController().setReference(-RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
+    motor20.getClosedLoopController().setReference(-RPM*0.3, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
 }   
 public Command shooter(double RPM)
 {

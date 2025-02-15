@@ -13,6 +13,7 @@ import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
+import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -39,7 +40,7 @@ public class Pivot extends SubsystemBase {
   {
     return new RepeatCommand
       (
-        new InstantCommand(() -> motor1.set((Math.abs(input.get()) < Constants.stickDeadband) ? 0 : input.get()), this)
+        new InstantCommand(() -> motor1.set((Math.abs(-input.get()) < Constants.stickDeadband) ? 0 : -input.get()*0.5), this)
       );
   }
 
@@ -54,10 +55,13 @@ public class Pivot extends SubsystemBase {
     SparkMaxConfig motor1Config = new SparkMaxConfig();
     SparkMaxConfig motor3Config = new SparkMaxConfig();
 
+
     motor1Config
     .smartCurrentLimit(30)
-    .idleMode(IdleMode.kBrake);
-
+    .idleMode(IdleMode.kBrake)
+    .inverted(true);
+    motor1Config.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder).p(0.015);
+    motor1Config.absoluteEncoder.positionConversionFactor(360);
     motor1.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     
     motor3Config
@@ -66,6 +70,7 @@ public class Pivot extends SubsystemBase {
     .follow(motor1.getDeviceId(), true);
     
     motor3.configure(motor3Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    motor1.getAbsoluteEncoder().getPosition();
 
     
 
@@ -91,12 +96,12 @@ this)
 
 public Command postitionToIndex()
 {
-  return new SparkPosition(motor1, 47, 5, this)
+  return new SparkPosition(motor1, 58, 1, this)
     .withName("Postition to shoot Frooty Loopy Thingy");
     
 }
-public Command level1(){return new SparkPosition(motor1, 1, 0.5, this);}
-public Command level2(){return new SparkPosition(motor1, 2, 0.5, this);}
-public Command level3(){return new SparkPosition(motor1, 3, 0.5, this);}
-public Command level4(){return new SparkPosition(motor1, 4, 0.5, this);}
+public Command level1(){return new SparkPosition(motor1, 80, 1, this);}
+public Command level2(){return new SparkPosition(motor1, 40, 5, this);}
+public Command level3(){return new SparkPosition(motor1, 3, 5, this);}
+public Command level4(){return new SparkPosition(motor1, 4, 5, this);}
 }

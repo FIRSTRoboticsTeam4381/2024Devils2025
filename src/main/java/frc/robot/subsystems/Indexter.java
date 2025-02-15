@@ -41,7 +41,7 @@ public class Indexter extends SubsystemBase {
     SparkMaxConfig motor1Config = new SparkMaxConfig();
 
     motor1Config
-    .smartCurrentLimit(30)
+    .smartCurrentLimit(40)
     .idleMode(IdleMode.kCoast);
 
     motor1.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -87,6 +87,27 @@ public Command Take()
 {
     return new InstantCommand(() -> motor1.set(0.52), this).repeatedly();
 }
+public Command notTake()
+
+{
+    return new InstantCommand(() -> motor1.set(0), this).repeatedly();
+}
+public Command breakBeam(int brakeBeam)
+{
+return new FunctionalCommand(
+  () -> motor1.set(0.5),
+  () -> {},
+  (interupted) -> motor1.set(0),
+   () -> {if(brakeBeam == 1)
+   {return brakeBeam1.get();}
+   else{return !brakeBeam2.get();}},
+   this);
+   
+}
+
+
+
+
 
 
 }

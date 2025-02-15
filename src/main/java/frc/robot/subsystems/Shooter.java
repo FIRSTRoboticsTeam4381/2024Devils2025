@@ -86,6 +86,10 @@ public void setVelocity(double RPM)
     motor10.getClosedLoopController().setReference(RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
     motor20.getClosedLoopController().setReference(RPM, ControlType.kVelocity, ClosedLoopSlot.kSlot0);
 }   
+public Command Shooter(double RPM)
+{
+ return new FunctionalCommand(() -> setVelocity(RPM), () -> {}, (interuppted) -> {}, null, null);
+}
 
 /*public Command doNotSpit()
 {

@@ -104,7 +104,7 @@ this)
 public Command postitionToIndex()
 {
   return new SparkPosition(motor1, 58, 1, this)
-    .withName("Postition to shoot Frooty Loopy Thingy");
+    .withName("Postition to Shoot");
     
 }
 

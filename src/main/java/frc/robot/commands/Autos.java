@@ -31,6 +31,9 @@ public final class Autos {
             return new PreviewAuto("Barge & Reef Auto");
         }
     
+        public static PreviewAuto DeleteThisLater(){
+            return new PreviewAuto("Delete This Later");
+        }
     /**
      * Blank Autonomous to be used as default dashboard option
      * @return Autonomous command

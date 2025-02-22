@@ -6,6 +6,8 @@ package frc.robot;
 
 import java.util.function.Supplier;
 
+import com.pathplanner.lib.auto.NamedCommands;
+
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -78,14 +80,19 @@ public class RobotContainer {
     autoChooser.addOption("Test", Autos.testAuto());
     autoChooser.addOption("Barge & Reef Auto", Autos.BargeandReefAuto());
     autoChooser.addOption("Autocool", Autos.AutoCool());
-
+    autoChooser.addOption("Delete This Later", Autos.DeleteThisLater());
     // Add auto controls to the dashboard
     SmartDashboard.putData("Choose Auto:", autoChooser);
     SmartDashboard.putData(CommandScheduler.getInstance());
     autoChooser.onChange((listener) -> listener.showPreview());
     SmartDashboard.putNumber("Start Delay",0);
 
-    
+    NamedCommands.registerCommand(null, getAutonomousCommand());
+
+
+
+
+
     // Configure button bindings
     configureBindings();
   }
@@ -107,8 +114,8 @@ public class RobotContainer {
 
             specialist.cross().whileTrue(shooter.Spit());
             //specialist.a().onFalse(shooter.doNotSpit());
-            specialist.triangle().whileTrue(indexter.indexTheFrootLoop());
-            specialist.square().toggleOnTrue(commandsAsWell.GrabFrootLoop());
+            specialist.triangle().whileTrue(indexter.indexNote());
+            specialist.square().toggleOnTrue(commandsAsWell.GrabNote());
 
            // specialist.povUp().onTrue(pivot.level4());
             specialist.povDown().onTrue(pivot.level1());

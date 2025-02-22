@@ -37,14 +37,14 @@ public class CommandsAsWell
         this.shooter = shooter;
         this.hang = hang;
         this.controller = controller;
-        NamedCommands.registerCommand("Grab Froot Loop", GrabFrootLoop());
-        NamedCommands.registerCommand("Shoot the Loop", ShootDaLoop());
+        NamedCommands.registerCommand("Grab Note", GrabNote());
+        NamedCommands.registerCommand("Shoot Note", ShootStuff());
     }
   
  
 
 
- public Command  GrabFrootLoop()
+ public Command GrabNote()
  { 
     return new SequentialCommandGroup
         ( new ParallelCommandGroup(pivot.postitionToIndex(), 
@@ -59,7 +59,7 @@ public class CommandsAsWell
         );
     }
 
-    public Command ShootDaLoop()
+    public Command ShootStuff()
     {return new InstantCommand(() -> shooter.Spit());}
 
     public Command HangingIsInYourImagination(){return new InstantCommand(() -> hang.moveMotors());}

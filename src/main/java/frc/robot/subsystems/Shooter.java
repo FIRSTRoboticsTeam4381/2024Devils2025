@@ -73,16 +73,16 @@ public class Shooter extends SubsystemBase {
   }
     
 
-public Command Spit()
+public Command Shoot()
 
 {
-    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(-0.65)) , new InstantCommand(() -> motor20.set(-0.50), this)).withName("Actually Shoot Things").repeatedly();
+    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(-0.65)) , new InstantCommand(() -> motor20.set(-0.50), this)).repeatedly();
     
 }   
-public Command stopspit()
+public Command stopShooting()
 
 {
-    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(0)) , new InstantCommand(() -> motor20.set(0), this)).withName("Stop Shooting Things");
+    return new ParallelCommandGroup(new InstantCommand(() -> motor10.set(0)) , new InstantCommand(() -> motor20.set(0), this));
     
 }   
 

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.6142500000000001,
-        "y": 1.694749999999999
+        "x": 0.5514344262295081,
+        "y": 1.7293545081967203
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.791026695296638,
-        "y": 1.871526695296635
+        "x": 1.5514344262295072,
+        "y": 1.7293545081967203
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.925,
-        "y": 1.24625
+        "x": 2.9969262295081966,
+        "y": 1.4056864754098353
       },
       "prevControl": {
-        "x": 2.8321523309114736,
-        "y": 1.0141308272786853
+        "x": 2.0618852459016392,
+        "y": 1.585502049180327
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,22 +31,10 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "Shooter_shoot_Frooty_Loopy_Thingy"
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 2.5,
-    "maxAcceleration": 2.5,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -54,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 55.304846468765945
+    "rotation": -124.62415507994905
   },
   "reversed": false,
   "folder": null,
@@ -62,5 +50,5 @@
     "velocity": 0,
     "rotation": 0.0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
 import frc.robot.subsystems.Hang;
 import frc.robot.subsystems.Indexter;
@@ -37,14 +38,15 @@ public class CommandsAsWell
         this.shooter = shooter;
         this.hang = hang;
         this.controller = controller;
-        NamedCommands.registerCommand("Grab Note", GrabNote());
-        NamedCommands.registerCommand("Shoot Note", ShootStuff());
+        
+        NamedCommands.registerCommand("Intake And Index Note", IntakeAndIndexNote());
+        NamedCommands.registerCommand("Shoot Note", ShootNote());
     }
   
  
 
-
- public Command GrabNote()
+ 
+    public Command IntakeAndIndexNote()
  { 
     return new SequentialCommandGroup
         ( new ParallelCommandGroup(pivot.postitionToIndex(), 
@@ -59,25 +61,22 @@ public class CommandsAsWell
         );
     }
 
-    public Command ShootStuff()
-    {return new InstantCommand(() -> shooter.Spit());}
+    public Command ShootNote()
+    {return new SequentialCommandGroup(
+        shooter.Shoot(), 
+        new WaitCommand(1.5),
+        indexter.indexNote(),
+        shooter.stopShooting()
+        
+        
+        );
+        
+    
+    
+}
 
     public Command HangingIsInYourImagination(){return new InstantCommand(() -> hang.moveMotors());}
     
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -112,10 +112,10 @@ public class RobotContainer {
 
           specialist.R3().toggleOnTrue(shooter.shooter(3000));
 
-            specialist.cross().whileTrue(shooter.Spit());
+            specialist.cross().whileTrue(shooter.Shoot());
             //specialist.a().onFalse(shooter.doNotSpit());
             specialist.triangle().whileTrue(indexter.indexNote());
-            specialist.square().toggleOnTrue(commandsAsWell.GrabNote());
+            specialist.square().toggleOnTrue(commandsAsWell.IntakeAndIndexNote());
 
            // specialist.povUp().onTrue(pivot.level4());
             specialist.povDown().onTrue(pivot.level1());

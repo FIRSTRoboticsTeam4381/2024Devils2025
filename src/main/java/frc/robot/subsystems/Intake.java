@@ -73,7 +73,7 @@ public Command Take()
 
 }
   
-public Command stopspinningthing()
+public Command stopTaking()
 
 {
     return new InstantCommand(() -> intakemotor1.set(0), this);

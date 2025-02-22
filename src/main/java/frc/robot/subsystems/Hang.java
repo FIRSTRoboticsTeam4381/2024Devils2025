@@ -68,6 +68,7 @@ public class Hang extends SubsystemBase {
 
     motorHang2.configure(motorHang2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     motorHang2.getAbsoluteEncoder().getPosition();
+    
 
 this.setDefaultCommand(
   

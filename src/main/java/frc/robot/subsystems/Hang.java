@@ -58,6 +58,7 @@ return new RepeatCommand
     motorHang2Config.follow(motorHang1, true);
 
     motorHang2.configure(motorHang2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    motorHang2.getAbsoluteEncoder().getPosition();
     
 
 this.setDefaultCommand(

@@ -9,6 +9,8 @@ import com.revrobotics.spark.SparkMax;
 
 import java.util.function.Supplier;
 
+import javax.naming.LimitExceededException;
+
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
@@ -40,7 +42,12 @@ public class Pivot extends SubsystemBase {
   {
     return new RepeatCommand
       (
-        new InstantCommand(() -> motor1.set((Math.abs(-input.get()) < Constants.stickDeadband) ? 0 : -input.get()*0.5), this)
+        new InstantCommand(() -> {
+          motor1.set((Math.abs(-input.get()) < Constants.stickDeadband) ? 0 : -input.get()*0.5);
+          if (motor1.getAbsoluteEncoder().getPosition() > 85 && -input.get() > 0){motor1.set(0);} 
+          if (motor1.getAbsoluteEncoder().getPosition() < 8.5 && -input.get() < 0){motor1.set(0);} 
+
+        }, this)
       );
   }
 
@@ -100,6 +107,8 @@ public Command postitionToIndex()
     .withName("Postition to shoot Frooty Loopy Thingy");
     
 }
+
+
 public Command level1(){return new SparkPosition(motor1, 80, 1, this);}
 public Command level2(){return new SparkPosition(motor1, 40, 5, this);}
 public Command level3(){return new SparkPosition(motor1, 3, 5, this);}

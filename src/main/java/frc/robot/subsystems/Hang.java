@@ -33,11 +33,18 @@ public class Hang extends SubsystemBase {
   private SparkMax motorHang1;
   private SparkMax motorHang2;
   public Command joystickControl(Supplier<Double> input)
-{
-return new RepeatCommand
-(
-  new InstantCommand(() -> motorHang1.set((Math.abs(input.get()) < Constants.stickDeadband) ? 0 : -input.get()), this));
-}
+  {
+    return new RepeatCommand
+      (
+        new InstantCommand(() -> {
+          motorHang1.set((Math.abs(-input.get()) < Constants.stickDeadband) ? 0 : -input.get()*0.5);
+          if (motorHang2.getAbsoluteEncoder().getPosition() > 0.75 && -input.get() > 0){motorHang1.set(0);} 
+          if (motorHang2.getAbsoluteEncoder().getPosition() < 0.1 && -input.get() < 0){motorHang1.set(0);} 
+
+        }, this)
+      );
+  }
+
   //Creates a new Pivot.
   public Hang() {
 
@@ -49,16 +56,18 @@ return new RepeatCommand
     SparkMaxConfig motorHang1Config = new SparkMaxConfig();
     SparkMaxConfig motorHang2Config = new SparkMaxConfig();
 
+
     motorHang1Config
     .smartCurrentLimit(30)
     .idleMode(IdleMode.kCoast);
+    motorHang1Config.absoluteEncoder.inverted(true).zeroOffset(0);
 
     motorHang1.configure(motorHang1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     motorHang2Config.apply(motorHang1Config);
     motorHang2Config.follow(motorHang1, true);
 
     motorHang2.configure(motorHang2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-    
+    motorHang2.getAbsoluteEncoder().getPosition();
 
 this.setDefaultCommand(
   
